@@ -1,0 +1,90 @@
+================================================================================
+
+	Nume: Dobrii Ionut-Alexandru
+	Grupa: 334CA
+	Limbaj: C++
+
+	Arhiva contine urmatoarele fisiere:	
+		- serial.cpp
+		- paralel.cpp
+		- colonii.h
+		- Makefile
+		- run_serial.sh
+		- run_paralel.sh
+
+	Pentru a compila se ruleaza comanda "make" plus tipul variantei "paralel"
+sau "serial", dupa care se ruleaza scriptul respectiv:
+	
+	!!! ./run_serial.sh T N, unde T = numar iteratii, N = dimensiune matrici !!!
+	!!! ./run_paralel.sh T N, unde T = numar iteratii, N = dimensiune matrici !!!
+
+	Exemplu: ./run_paralel 500 50
+
+	Directorul "teste_t1" trebuie sa fie in acelasi director cu fisierele sursa,
+	iar fisierul de iesire se numeste: "output".
+
+================================================================================
+	Ambele variante sunt neoptimizate.!!!
+
+	Pentru varianta seriala am citit din fisier matricile initiale pentru pret,
+buget si resurse pe care le am retinut intr-o structura bidimensionala corespunzatoare 
+primului an de analiza a pietei. Pentru urmatorii ani am calculat valorile matricilor 
+mentionate mai sus parcurgand matricea de preturi, si pentru fiecare element in parte,
+parcurgand  din nou matricea pentru a gasi costul complementar minim, respectiv 
+costul minim al unei resurse de tipul Rij, vazut din perspectiva lui Colij.
+Imediat dupa determinarea evolutiei preturilor pentru un anumit an, am aflat
+pretul maxim pentru ambele resurse, cat si numarul de resurse de tipul A, res-
+pectiv B. Acestea le am memorat intr-o structura unidimensionala. Dupa terminarea
+celor N iteratii reprezentand numarul de ani, am afisat in fisierul primit
+ca parametru in linia de comanda, valorile finale pentru matricile pret, buget si
+resurse, respectiv valorile maxime ale pretului pentru fiecare an din perspectiva
+ambelor resurse.
+
+	Complexitatea acestei variante este O(n^4*nr_iteratii). Un O(n^2) provine
+din parcurgerea matricilor pentru fiecare colonist in parte, iar celalat O(n^2)
+rezulta din o noua parcurgere a matricilor pentru a afla costul minim al resurselor,
+totul facandu-se pentru un numar de ani (nr_iteratii).
+
+================================================================================
+
+	Pentru varianta paralela, am urmat aceeasi pasi ca si la varianta seriala,
+cu diferenta ca am adaugat o directiva de calcul paralel al costului minim
+pentru fiecare colonist in parte si o alta directiva de calcul paralel pentru
+a afla numarul de resurse de tipul A si B, respectiv valorile maxime
+pentru fiecare an ale acestora.
+
+	Complexitatea acestei variante este O(n^3*nr_iteratii). O(n^3) provine
+din parcurgerea matricilor pentru calculul costului minim al resurselor plus o 
+parcurgere pe colone pentru fiecare colonist in parte, liniile fiind luate in paralel,
+totul pentru un numar de ani(nr_iteratii).
+
+================================================================================
+
+	!!!Analiza performantelor!!!
+
+	Pentru fisierul de input "in100_1.txt" (N = 100, nr_iteratii = 50):
+		- varianta seriala: 3 min 26 sec 
+		- varianta paralela: 
+				- 2 thread-uri: 1 min 44 sec => speedup = 2
+				- 4 thread-uri: 52 sec => speedup = 4
+				- 8 thread-uri: 27 sec => speedup = 7.6
+
+	Pentru fisierul de input "in50_1.txt" (N = 50, nr_iteratii = 500):
+		- varianta seriala: 1 min 55 sec 
+		- varianta paralela: 
+				- 2 thread-uri: 59 sec => speedup = 2
+				- 4 thread-uri: 31 sec => speedup = 3.7
+				- 8 thread-uri: 17 sec => speedup = 6.8
+	
+	Limitele de timp in care se incadreaza variantele paralele sunt aproximativ
+acelasi indiferent de marimea chunk-ului.
+
+	Timpul de executie al variante seriale este G(n) = O(n^4*nr_iteratii). 
+	Timpul de executie al variante paralele este Tp(n) = O(n^3*nr_iteratii).
+	=> Speed-upul S(n) = G(n)/Tp(n)
+				  S(n) = O(n^4*nr_ieteratii) / O(n^3*nr_ieteratii).
+				  S(n) = O(n).
+================================================================================
+
+
+
