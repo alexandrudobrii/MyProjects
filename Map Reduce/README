@@ -1,0 +1,34 @@
+================================================================================
+
+	Nume: Dobrii Ionut-Alexandru
+	Grupa: 334CA
+	Limbaj: Java
+
+================================================================================
+
+	Arhiva contine urmatoarele fisiere:
+		- Main.java
+		- ReplicatedWorkers.java
+		- WorkPool.java
+		- README.txt
+		- Makefile
+
+================================================================================
+
+	Algortimul citeste din fisierul de intrare dat ca argument in linia de
+comanda si memoreaza toate datele din acesta, dupa care se creeaza noi task-uri
+de tip Map care primesc numelele fisierului, pozitia de unde incepe citirea,
+respectiv dimensiunea sirului de citit. Odata create acestea se pornesc workerii
+de tip Map, care pentru fiecare task, realizeaza unrmatoarele opratii: se 
+citeste din fisier din locatia respectiva si se extrag cuvintele, respectiv 
+numarul de apartii al acestora, si creeaza noi task-uri de tip reduce. Operatiile
+pentru reduce sunt realizate de alti workeri care combina toate rezultatele
+partiale intr-unul singur, astfel ca dupa terminarea acestor operatii va rezulta
+determinarea frecventei fiecarui cuvant in parte, pentru fiecare document.
+
+	Structurile de date folosite au fost HashMap-urile pentru o cautare foarte 
+rapida a cuvintelor, respectiv a frecventlor. Clasa Worker a fost inclusa 
+intr-o alta clasa (Concurent) pentru a beneficia de zona comuna pentru toate
+thread-urile, de asemenea facandu-se sincronizari pe aceasta memorie parrajata.
+
+================================================================================

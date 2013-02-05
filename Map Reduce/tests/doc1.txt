@@ -1,0 +1,75 @@
+The Hadoop Distributed Filesystem
+---------------------------------
+
+When a dataset outgrows the storage capacity of a single physical machine, it becomes
+necessary to partition it across a number of separate machines. Filesystems that manage
+the storage across a network of machines are called distributed filesystems. Since they
+are network based, all the complications of network programming kick in, thus making
+distributed filesystems more complex than regular disk filesystems. For example, one
+of the biggest challenges is making the filesystem tolerate node failure without suffering
+data loss.
+Hadoop comes with a distributed filesystem called HDFS, which stands for Hadoop
+Distributed Filesystem. (You may sometimes see references to "DFS"-informally or in
+older documentation or configuration - which is the same thing.) 
+
+The Design of HDFS
+------------------
+
+HDFS is a filesystem designed for storing very large files with streaming data access
+patterns, running on clusters on commodity hardware. Let us examine this statement in
+more detail:
+
+Very large files -- "Very large" in this context means files that are hundreds of megabytes, gigabytes,
+or terabytes in size. There are Hadoop clusters running today that store petabytes
+of data.
+
+Streaming data access -- HDFS is built around the idea that the most efficient data processing pattern is a
+write-once, read-many-times pattern. A dataset is typically generated or copied from source, 
+then various analyses are performed on that dataset over time. Each
+analysis will involve a large proportion, if not all, of the dataset, so the time to read
+the whole dataset is more important than the latency in reading the first record.
+
+Commodity hardware -- Hadoop does not require expensive, highly reliable hardware to run on. It is designed
+to run on clusters of commodity hardware (commonly available hardware available
+from multiple vendors) for which the chance of node failure across the cluster is
+high, at least for large clusters. HDFS is designed to carry on working without a
+noticeable interruption to the user in the face of such failure.
+It is also worth examining the applications for which using HDFS does not work so
+well. While this may change in the future, these are areas where HDFS is not a good fit
+today:
+
+Low-latency data access -- Applications that require low-latency access to data, in the tens of milliseconds
+range, will not work well with HDFS. Remember HDFS is optimized for delivering
+a high throughput of data, and this may be at the expense of latency. HBase is currently a better choice for low-latency access.
+
+Lots of small files -- Since the namenode holds filesystem metadata in memory, the limit to the number
+of files in a filesystem is governed by the amount of memory on the namenode. As
+a rule of thumb, each file, directory, and block takes about 150 bytes. So, for example,
+if you had one million files, each taking one block, you would need at least
+300 MB of memory. While storing millions of files is feasible, billions is beyond
+the capability of current hardware.
+
+Multiple writers, arbitrary file modifications -- Files in HDFS may be written to by a single writer. Writes are always made at the
+end of the file. There is no support for multiple writers, or for modifications at
+arbitrary offsets in the file. (These might be supported in the future, but they are
+likely to be relatively inefficient.)
+
+HDFS Concepts
+-------------
+
+Blocks
+
+A disk has a block size, which is the minimum amount of data that it can read or write.
+Filesystems for a single disk build on this by dealing with data in blocks, which are an
+integral multiple of the disk block size. Filesystem blocks are typically a few kilobytes
+in size, while disk blocks are normally 512 bytes. This is generally transparent to the
+filesystem user who is simply reading or writing a file - of whatever length. However,
+there are tools to do with filesystem maintenance, such as df and fsck, that operate on
+the filesystem block level.
+HDFS too has the concept of a block, but it is a much larger unit-64 MB by default.
+Like in a filesystem for a single disk, files in HDFS are broken into block-sized chunks,
+which are stored as independent units. Unlike a filesystem for a single disk, a file in
+HDFS that is smaller than a single block does not occupy a full block's worth of underlying
+storage. When unqualified, the term "block" in this book refers to a block in
+HDFS.
+
