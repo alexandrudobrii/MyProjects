@@ -1,0 +1,54 @@
+================================================================================
+
+	Nume: Dobrii
+	Prenume: Ionut-Alexandru
+	Grupa: 324CA
+	Limbaj: C/C++
+
+================================================================================
+
+	Programul mai intai citeste din fisierele specificate in enuntul temei
+valorile lui 'lambda', 'treshold', precum si pixelii imaginii initiale. Pentru 
+pixelii din 'mask_fg' si 'mask_bg' se retin intr-un vector doar valorile mai
+mari ca zero.
+
+	Al doilea pas consta in creearea grafului imaginii pornind de la fisierul
+de intrare 'imagine.pgm'. Pentru fiecare nod din vectorul cu pixeli ai imaginii
+initiale se determina care sunt vecinii acestuia mergand in toate cele 4 directii
+posibile (N, S, W, E) si se retin intr-o lista de adiacenta cei care se afla 
+in matricea imaginii initiale (nu se depaseste dimensiunea acesteia). Dupa care
+am calculat capacitatea fiecarei muchii cu ajutorul functiei 'f' cu 4 parametrii.
+	Suplimentar am adaugat doua noi noduri (strat si finish) pe care le-am legat
+la tate nodurile existente in graf avand o capacitate egala cu valorea functiei
+'f' cu doi parametrii. Astfel ma creeat graful neorientat al pixelolor cititi
+din fisier.
+
+	Pentru a determina o minimizare a functiei de energie cu ajutorul grafului
+creeat am determinat fluxul maxim pe acesta. Mai intai am determinat prin inter-
+mediul functiei 'bfs' toate drumurile posibile de la start la finish. Cat timp
+mai exista drumuri de crestere il determin cu functia mentionata mai sus, dupa
+care determin fluxul maxim prin drum parcurgand calea gasita in urma apelului 'bfs'
+si saturez drumul cu acea valoare gasita pe care o si returnez. Pentru fiecare
+drum de crestere gasit se actualizeaza fluxul maxim, adunad la valoarea curenta
+a fluxului, noua valoare determinata in urma saturaii caii de la start la finish
+Cand nu mai exista astfel de drumuri se returneaza valoarea finala a fluxului 
+maixim care coincide cu valoarea minima a energiei.
+
+	Pentru a afla care pixeli se afla in prim-plan respectiv fundal se face o
+noua parcurgere 'bfs' adaugand toate nodurile atinse la multimea 'source_set'.
+Nodurile nevizitate se aduga la multimea 'sink_set'. In final se afiseaza in
+fisierul 'segment.pgm' noile valori alea pixelilor: daca un pixel se afla in
+multimea 'source_set' atunci valoarea acestuia este 0, alfel asceta ia valoarea 255.
+
+================================================================================
+
+Complexitatea algoritmului este: O(V^3), V = numarul de noduri;
+Sursa pentru algoritmul de flux maxim este laboratorul 10 de PA, fara optimizari.
+	
+	M-am incadrat in limitele de timp specificate pe forum: "Pe doua categorii 
+(testele 1-10 si 11-16), limitele  de timp (dupa parerea mea foarte largi) sunt:
+
+		- C/C++ (fara optimizari): 2s si 15s
+		- C/C++ (cu optimizari): 1s si 8s"
+
+================================================================================
