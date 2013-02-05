@@ -1,0 +1,41 @@
+================================================================================
+
+	Nume: Dobrii Ionut-Alexandru
+	Grupa: 334CA
+	Limbaj: C++
+
+
+	Arhiva contine urmatoarele fisiere:	
+		- sets.spp
+		- sets.h
+		- Makefile
+		- check.sh
+		- imgdiff
+		- README
+
+	Checker-ul primeste ca parametru o valoare intreaga ce reprezinta numarul 
+    de procese si testeaza toate fisierele din directorul 'test'  
+
+================================================================================
+
+	Programul incepe in momentul in care procesul MASTER incepe citirea din
+fisier a datelor de intrare. Totodata se aloca memorie pentru matricea finala
+si se trimit la celalte procese datele retinute de acesta, prin mecanismul de
+Broadcast, dupa care isi incepe calulul propriei lui parti de matrice.
+	
+	Toate celelalte procese, diferite de cel MASTER, imediat dupa primirea
+datelor isi calculeaza dimensiunea submatricii pe care trebuie sa lucreze. Acesta
+isi face o impartiere pe linii cu uramatoarele formule:
+	
+	start_x = x_min + rank*split*resolution;
+    end_x = start_x + split*resolution;
+    start_y = y_min;
+    end_y = y_max;   
+	
+unde split reprezinta dimensiunea subproblemei, iar resolution este pasul. Dupa
+determinarea submatricii, aceasta se trimite la rank-ul MASTER, care la randul sau
+o scrie in matricea finala. Dupa ce a primit informatii de la celelate procsese
+atunci poate scrie in fisier cu extensia .pgm, matricea rezultata dupa combinarea
+rezultatelor
+
+================================================================================
