@@ -1,0 +1,109 @@
+================================================================================
+
+	Nume: Dobrii 
+	Prenume: Ionut-Alexandru
+	Seria si grupa: 324CA
+	Limbaj: C/C++
+	Platforma: Linux
+
+		Am batut toti oponentii (5,7 si 8), dar cum este un joc de noroc 
+	(80% de noroc dupa parerea mea) se intampla sa fiu si infrant de oponentii
+	mai sus mentionati, totul in functie de zarul dat. 
+
+================================================================================
+
+	Fisierele sursa din arhiva:
+		- BGBoard.h
+		- BGBoard.cpp
+		- Backgammon.cpp
+		- Makefile
+		- README
+
+================================================================================
+
+	In fisierul 'BGBoard.h' mi-am reprezentat tabla de joc ca un vector de 26 de
+de locatii in care poztiile 0 si 25 reprezinta locul unde cei doi jucatori isi 
+scot piesele la final. Obictele 'barB', 'barW' si 'insideB', 'insideW' reprezin-
+ta numrarul de piese de pe bara, respectiv numarul de piese din casele feicarui
+jucator in parte. In clasa BGBoard mai exista un constructor prin care se 
+initializeaza tabla de joc, precum si urmatoarele metode auxiliare:
+
+	- bool can_pick(Player): se verifica daca se pot scoate piese
+
+	- bool test(Player,int,int): metoda ce returneaza 'true' daca se pot efectua
+		mutari din casa pentru pisele aflate in stanga valorii zarului, iar daca
+		nu se gasesc piese in stanga se cauta prima piesa din dreapta; daca se 
+		poate efectua mutarea se returneaza 'true', altfel se returneaza 'false' 
+
+	- bool test_bar(Player): metoda care returneaza 'true' daca exista piese pe 
+		bara penru un anumit jucator; altfel se returneaza 'false'.
+
+	- bool is_valid(Player,int,int): metoda care returneaza 'true' daca se pot 
+		efectua mutari de la o anumita pozitie un numar de 'how_many' casute; 
+		altfel se returneaza 'false'.
+
+	- bool is_valid(Player,int): metoda care returneaza 'true' daca pozitia 
+		specificata este valida pentru jucatorul specificat; altfel se 
+		returneaza 'false'.
+
+	- void move(Player,int,int): metoda care muta o piesa de la o pozitie un 
+		numar de 'how_many' casute.
+
+	- void insert_from_bar(Player,int,int): functie care insereza o piesa de pe 
+		bara pentru un anumit jucator.
+
+================================================================================
+
+	In fisierul 'BGBoard.cpp' am creat functii auxiliare cu ajutorul carora imi
+generez toate mutarile posibile pentru o tabla de joc si un zar dat. De
+asemenea imi determin si cea mai buna mutare dintre cele generate mai sus.
+Pentru aceasta am creeat urmatoarele functii:
+	
+	- void pick_checker_White(Solution, Player, int [], Tree&): functie care 
+		genereaza mutari cu toate combinatiile posibile de a scoate piese pentru
+		jucatorul alb.
+
+	- void pick_checker_Black(Solution, Player, int [], Tree&): functie care 
+		genereaza mutari cu toate combinatiile posibile de a scoate piese pentru
+		jucatorul negru.
+
+	- void insert_two(Solution, Player, int [], Tree&): functie care insereaza 
+		in casa adversarului doua piese de pe bara.
+
+	- void move_and_pick(BGBoard, Solution, Player, int [], Tree&): functie care
+		 muta o piesa din afara casei in casa conform primului zar si scoate o 
+		 piesa din casa unui anumit jucator, conform celui de-al doilea zar.
+
+	- void gen_partial_moves(Solution, Player, int [], Tree&): functie de 
+		generare de mutari valida pentru un zar dat.
+
+	- Tree gen_all_moves(BGBoard, Player, int, int): functie care genereaza 
+	   toate posibilitatile de a muta pentru o tabla si o pereche de zaruri date
+
+	- int calc_score(BGBoard, Player): functie care calculeaza scorul 
+		pentru o anumita tabla.
+
+	- Moves think( BGBoard, Player, int, int): functie care determina mutarea 
+		cea mai buna.
+
+================================================================================
+
+	In fisierul 'Backgammon.cpp' se creaza legatura cu serverul, se trimit 
+mesaje intre cele doua entitati pentru initializarea si desfasurarea jocului.
+	Pentru infrangerea oponentului generez toate mutarile posibile pentru tabla 
+de joc curenta (cu ajutorul functiei 'gen_all_solutions') si dintre toate 
+aceste solutii o aleg pe cea optima (cu ajutorul functiei 'think') astfel: se 
+acorda o prioritate mai mare solutiilor unde am cele mai multe porti, dupa care
+se acorda punctje din ce in ce mai mari pentru  piesele aflate cat mai aproape 
+de propria casa. In final caut ca jucatorul curent sa aiba cat mai multe pise
+introduse in casa si cat mai putine pe bara, iar oponentul acestuia sa aiba
+cat mai putine piese in casa si cat mai multe pe bara. Dupa ce parcurg vectorul
+de soluii o aleg pe cea mai buna, adica cu scorul cel mai mare. Aceasta mutare
+o trimit la server pentru a fi efectuata. 
+
+================================================================================
+
+	Complexitate: in cazul cel mai defavorabil este O(n^3) - in cazul in care
+zarul dat este dubla.
+
+================================================================================
