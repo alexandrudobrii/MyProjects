@@ -1,0 +1,42 @@
+================================================================================
+
+	Nume: Dobrii Alexandru
+	Grupa: 334CA
+	Limbaj: C/C++
+	Mediu: Linux
+
+================================================================================
+
+	Algoritmul contine 3 parti:
+		- prima parte reprezinta stabilirea topologiei
+		- a doua parte este routarea pachetelor prin graf
+		- ultima parte contine alegerea liderului si a unui adjunct
+
+
+	Pentru partea de stabilire a topologiei fiecare nod trimite sondaje (mesaje
+formale) vecinilor, pana cand acestea ajung la frunze. Apoi fiecare frunza
+trimite ecouri continand matricea de adiacenta stita pana la pasul respectiv.
+Aceste mesaje se trimit la parinte, si tot asa pana cand ecourile ajung la nodul 
+MASTER. Matricea nodului MASTER va reprezenta matricea finala de adiacenta pe 
+baza careia fiecare nod isi genereaza propria tabela de routarea utilizand 
+algoritmul Dijkstra. Acesta este afisata intr-un fisier avand numele id-ul
+rank-ului.
+
+	In partea a doua a algoritmului fiecare nod trimite mesajele citite din fisiser
+catre next_hop spre destinatie. Atunci cand este primit un mesaj, acesta se parseaza
+si se afla destinatia acestuia. Daca destinatia coincide cu rank-ul curent atunci
+se verifica tipul mesajului. Daca este de tipul "AM TERMINAT" si este primit de
+nodul MASTER atunci se contorizeaza pana cand s-a primit un numar de pachete
+egal cu numarul rank-urilor, dupa care nodul master trimite vecinilor mesaje de
+tipul EXIT. Atunci cand este primit un astfel de mesaj, nodul respectiv il trimite
+mai departe vecinilor si isi incheie activitatea, astfel determinandu-se cand
+etapa a doua s-a terminat. In cazul in care alt tip de mesaj este primit, acesta
+se afiseaza.
+
+	Alegeea liderului si a unui adjunct incepe prin generarea random a unei decizii
+pentru fiecare dintre noduri, dupa care se trimite decizia catre rank-ul MASTER.
+Acesta cenralizeaza datele si in cazul in care exista o majoritate de voturi
+se comnuica decizia si celorlalte noduri. Altfel se reia etapa, pana cand se va
+alege un lider unic si un adjunct unic.
+
+================================================================================  
