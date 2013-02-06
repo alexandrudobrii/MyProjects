@@ -1,0 +1,44 @@
+================================================================================
+
+Nume: Dobrii Ionut-Alexandru
+Grupa: 334CA
+Limbaj: C/C++
+
+================================================================================
+
+	Arhiva contine toate fisierle sursa .cpp si .h din laboratorul 2 la care am
+adaugat urmatoarele fisiere:
+		- Rubik.cpp
+		- Rubik.h
+		- Game.cpp
+		- Game.h
+		- main.cpp
+
+	Proiectul l-am rulat cu ajutorul programului 'Visual Stdio 2010'.
+
+	/* !!! Pentru a putea roti cubul mai intai este nevoie ca
+	 * tasta 'SPACE' sa fie apasata pentru ca fetele sa fie 
+	 * amestecate,  dupa care se trece in modul rezolvare !!! */
+
+================================================================================
+
+	Pentru a initializa jocul se apeleaza constructorul clasei Game care
+adauga in fereastra un cub rubik compus la randul lui din 27 de cuburi mai
+mici. Pentru fiecare cele 9*6 fete am creat un nou obiect reprezentand culorile
+straturilor ce compun cubul rubik.
+
+	Cubul se poate roti in orice directie OX, OY, OZ si in ambele sensuri cu 
+ajutorul metodei 'move90_rubik' care roteste cele 27 de cuburi componente in jurul
+centrului celui din mijloc. De asemena se poate roti si fiecare strat  prin
+intermediul metodei 'move90_layer' care roteste fiecare cub compenent al stratului
+respectiv in jurul centrului axelor, pe cele trei axe.
+
+ 	La initializare, daca se apasa tasta 'space' se rotesc diverse straturi alese
+ random, pentru un numar de pasi, dupa care se trece in modul rezolvare. In acest
+ mode se poate selecta oricare dintre straturi utilizand tastele 'z', 'x', 'c',
+ aceste putand fi mutate cu ajutorul tastelor 'j' si 'l'. Intreg cubul poate
+ fi rotit apasand tastele 'q', 'w', 'e', 'a', 's', 'd', in toate directiile. Dupa
+ terminarea jocului, pe ecran apare un numar de cuburi egal cu numarul de mutari,
+ si pentru a reincepe jocul se apasa tasta 'r', reveninf astfel la cubul rezolvat.
+
+================================================================================    
