@@ -1,0 +1,48 @@
+================================================================================
+
+	Nume: Dobrii Ionut-Alexandru
+	Grupa: 334CA
+	Limbaj: C/C++
+	Mediu: Linux
+
+================================================================================
+
+	Compilarea acestui program se realizeza cu comanda 'make', iar rulare prin
+comanda 'make run'.
+	
+	Taste folosite:
+		- 'q', 'w', 'e', 'a', 's', 'd' => pentru a deplasa jucatorul;
+		- 'z', 'x', 'c', 'v' => pentru zoom (camera TD);
+		- 'u', 'i', 'j', 'k', 'n', 'm' => prentru rotirea camerei TPS;
+
+================================================================================
+
+	Labirintul a fost creat cu ajutorul mai multor cuburi care au fost transla-
+tate in functie de pozitia ocupata de caracterul '#' din fisierul de intrare.
+De asemenea, solul a fost creat tot prin adugare si translatie de cuburi.
+
+	Eroul este compus dintr-o sfera si dintr-un con. Pozitia initiala a acestui 
+in labirint a fost citita din fisier. Portalul este reprezentat dintr-un tor care
+a fost adugat in pozitia citita din fisier.
+
+	Din punct de vedere algoritmic eroul are aceeasi structura ca si camera, 
+clasa 'Jucator', extinzand clasa clasa 'Camera'. Pentru a translata jucatorul
+se apeleaza de fiecare data in functia 'display', metoda OpenGl 'glTranslatef'
+coordonatele acesteia fiind obictele clasei respective. Aceste coordonate sunt
+determinate cu ajutoul metodelor de translatie, respectiv rotatie din clasa
+'Camera'.
+	
+	Toate cele trei tipuri de camera (FPS, TPS si TD) sunt reprezentate prin
+vectorii de miscare forward, up si right. Pentru a translata si roti camerele
+se modifica directiile vectorilor declarati anterior prin intermediul formulelor
+implementate in fisierul 'camera.cpp'. Spre deosebire de celelalte doua tipuri
+de camera, TPS-ul mai are inca trei vectori auxiliari ('tps_forward', 'tps_up'
+si tps_right') cu ajutorul carora se poate roti acest tip de camera in jurul
+acestor axe, vectorii initiali ramanand nemodificati.
+
+	Conditia pentru detectatrea coliziunilor dintre pereti si jucator este ca
+distanta dntre centrele celor doua obiecte sa fie mai mica decat suma dintre
+inaltimea conului din care este alcatuit jucatorul si distanata de la centrul 
+unui perete la latura acestuia. 
+
+================================================================================
