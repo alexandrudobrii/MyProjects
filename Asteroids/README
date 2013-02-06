@@ -1,0 +1,54 @@
+================================================================================
+
+	
+	Nume: Dobrii Alexandru
+	Grupa: 334CA
+	Mediu: Linux
+
+
+================================================================================
+
+	Taste utilizate:
+
+	- q, w, e, a, s, d => penru a muta nava
+	- click stanga => pentru a trage cu laserul;
+	- click dreapta => pentru a pozitiona camera pe asetoid
+	- 1, 2 = > pentru selectia cameralor
+	- z, x, c, v, b, n => pentru a muta camera dinamica
+
+
+================================================================================
+
+	Lumea
+
+	- a fost reprezentata ca un paralelipiped dreptunghic, spatiu in care a fost
+generat un numar variabil de asteroizi
+	- zona de joc a fost luminata cu doua lumini omnidirectionale
+
+
+	Camera
+
+	- exista 3 tipuri de camere: camera dinamica care priveste lumea dintr-o 
+pozitie frontala, care poate fi mutata pe orice directie. Mai exista o camera
+care este situate in nava, care este directionata catre asteroizi. Cea de a treia
+camera este situata pe asteriodul selectat cu 'click dreapta'. In momentul in
+care asteroidul iese afara din zona de joc, pozitia camerei redevine 'dinamica'
+
+	Asteroizii
+
+	- sunt reprezentati de obictul din OpenGL, glDodecadron(), iar pozitia si
+dimensiuniea acesora este aleatorie. In momentul in care acestia ies din spatiul
+de joc, sunt regenerati, tot intr-o pozitie aleatorie.
+
+	
+	Nava
+
+	- a fost incarcata in joc dintr-un fisier cu extensia 'off' si poate fi 
+miscata pe toare directiile. Atunci cand este apasat, 'click dreapta' atunci se
+deseneaza o linie de la nava la asteroidul respectiv, linie ce reprezinta laserul.
+Toodata nava mai are si un scut protector, caruia ii scade transparenta pe masura
+ce este lovita de asteroizi. Coliziunile dintre asteroizi si nava sunt determinate
+cu asa numitle 'bounding spheres'.
+
+
+================================================================================
