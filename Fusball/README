@@ -1,0 +1,34 @@
+================================================================================
+
+Nume:  Dobrii Ionut-Alexandru
+Grupa: 334CA
+Limbaj: C/C++
+
+================================================================================
+
+	Tema a fost creeata pe Linux, folosind compilatorului 'g++'. Pentru 
+compilare se utilizeaza comanda "make", iar pentru rulare comanda "make run".
+Fisierelor ce au fost modificate, respectiv adaugata sunt: "main.cpp", 
+"Fussball.cpp" si "Fussball.h".
+	
+	Arhiva contine urmatoarele fisiere:
+		- main.cpp
+		- Fussball.cpp
+		- Fussball.h
+		- Support2d.cpp
+		- Support2d.h
+		- Transform2d.cpp
+		- Transform2d.h
+		- WorldDrawer2d_gl.cpp
+		- WorldDrawer2d.h
+		- HeadersAndDefines.h
+		- Makefile
+		- README
+
+================================================================================
+
+	Mingea se poate roti cu ajutorul tastelor 'a' si 'd', jucatorii pot fi mutati
+prin intermediul tastelor 'i', 'j', 'k', 'l', respectiv mingea se poate pasa
+cu tasta "SPACE". 
+
+================================================================================
