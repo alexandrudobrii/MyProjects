@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MeetUp</string>
+    <string name="action_settings">Settings</string>
+   	<string name="facebook_app_id">749651118445602</string>
+    <string name="title_activity_facebook_login">MeetUp</string>
+    <string name="title_activity_main_fragment">MainFragment</string>
+    <string name="title_activity_social_map">SocialMapActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="show_map">Track friends</string>
+    <string name="description">Description</string>
+    <string name="progress">Loading..</string>
+
+</resources>
