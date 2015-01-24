@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="config"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="libs/aopalliance-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/commons-codec-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/commons-logging-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/fluent-hc-4.2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/httpclient-4.2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/httpclient-cache-4.2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/httpcore-4.2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/httpmime-4.2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jackson-core-asl-1.9.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/spring-aop-3.2.2.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/spring-beans-3.2.2.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/spring-context-3.2.2.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/spring-core-3.2.2.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/spring-expression-3.2.2.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/spring-web-3.2.2.RELEASE-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/spring-web-3.2.2.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gcm.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gson-2.3.1.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
