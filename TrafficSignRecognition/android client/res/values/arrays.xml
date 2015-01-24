@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="image_ids">
+        <item>@drawable/image_1</item>
+        <item>@drawable/image_2</item>
+        <item>@drawable/image_3</item>
+        <item>@drawable/image_4</item>
+        <item>@drawable/image_5</item>
+        <item>@drawable/image_6</item>
+        <item>@drawable/image_7</item>
+        <item>@drawable/image_8</item>
+        <item>@drawable/image_9</item>
+        <item>@drawable/image_10</item>
+        <item>@drawable/image_11</item>
+        <item>@drawable/image_12</item>
+        <item>@drawable/image_13</item>
+        <item>@drawable/image_14</item>
+        <item>@drawable/image_15</item>
+        <item>@drawable/image_16</item>
+        <item>@drawable/image_17</item>
+        <item>@drawable/image_18</item>
+    </string-array>
+
+</resources>

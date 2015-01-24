@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewFlipper1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+
+    <ListView
+        android:id="@+id/custom_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_marginTop="40dp"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector_flatcolor" />
+
+    <LinearLayout
+        android:id="@+id/popup_window"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/test_image2"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/server_ip"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/enter_ip"
+            android:textColorHint="@color/black"
+            android:inputType="phone"
+            android:paddingRight="20dp" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/server_port"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textColorHint="@color/black"
+            android:hint="@string/enter_port"
+            android:inputType="phone" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:orientation="horizontal"
+            android:weightSum="2" >
+
+            <Button
+                android:id="@+id/accept_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:text="@string/set" />
+
+            <Button
+                android:id="@+id/return_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:text="@string/back" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/info_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ImageView
+            android:id="@+id/imagep"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/description"
+            android:scaleType="fitXY"
+            android:src="@drawable/test_image2" />
+
+        <TextView
+            android:id="@+id/info_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+             android:textColor="@color/black"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal|center"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <LinearLayout
+            android:id="@+id/ll_bookmarkslistad"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:paddingLeft="32dp"
+                android:textColor="@color/black"
+                android:paddingRight="32dp"
+                android:text="@string/back" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

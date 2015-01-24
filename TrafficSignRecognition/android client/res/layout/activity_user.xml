@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/viewFlipper1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/activity_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="italic" />
+
+    <ListView
+        android:id="@+id/logs"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_tab"
+        android:layout_marginTop="40dp"
+        android:dividerHeight="3dp"
+        android:listSelector="@drawable/list_selector_flatcolor" />
+
+</RelativeLayout>

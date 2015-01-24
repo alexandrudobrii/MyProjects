@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/get_location_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="161dp"
+        android:onClick="getLocation"
+        android:text="get location" />
+    
+    <TextView
+        android:id="@+id/lat_lng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/label_lat_lng"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/label_lat_lng"
+        android:textIsSelectable="true"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/label_lat_lng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/get_location_button"
+        android:layout_marginBottom="78dp"
+        android:layout_toLeftOf="@+id/get_location_button"
+        android:text="lat-lang"
+        android:textSize="20sp" />
+    
+    <TextView
+        android:id="@+id/text_connection_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="unknown"
+        android:textIsSelectable="true" />
+
+    <TextView
+        android:id="@+id/text_connection_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/text_connection_status"
+        android:text="unknown"
+        android:textIsSelectable="true"/>
+    
+</RelativeLayout>
